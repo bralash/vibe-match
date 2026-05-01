@@ -40,6 +40,13 @@
       padding: 16px;
       border-bottom: 1px solid var(--border);
     }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 3px;
+    }
+    .header-brand svg { flex-shrink: 0; border-radius: 8px; }
     .header h1 {
       font-size: 18px;
       font-weight: 700;
@@ -53,6 +60,7 @@
       color: var(--muted);
       font-size: 11px;
       margin-top: 2px;
+      padding-left: 42px;
     }
 
     /* ── Sections ──────────────────────────────────────────────── */
@@ -289,7 +297,29 @@
 
   <!-- ── Header ─────────────────────────────────────────────────── -->
   <div class="header">
-    <h1>Vibe Match ✦</h1>
+    <div class="header-brand">
+      <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+        <defs>
+          <clipPath id="roundedClip">
+            <rect width="128" height="128" rx="28" ry="28"/>
+          </clipPath>
+          <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stop-color="transparent"/>
+            <stop offset="100%" stop-color="#000"/>
+          </radialGradient>
+        </defs>
+        <rect width="128" height="128" rx="28" fill="#0F0F0F"/>
+        <circle cx="46" cy="52" r="28" fill="#FF5C5C" opacity="0.92" clip-path="url(#roundedClip)"/>
+        <circle cx="82" cy="52" r="28" fill="#FFD44F" opacity="0.88" clip-path="url(#roundedClip)"/>
+        <circle cx="64" cy="82" r="28" fill="#7B6EF6" opacity="0.90" clip-path="url(#roundedClip)"/>
+        <circle cx="64" cy="46" r="12" fill="#FF9A3C" opacity="0.75" clip-path="url(#roundedClip)"/>
+        <circle cx="76" cy="70" r="10" fill="#C4A8F5" opacity="0.60" clip-path="url(#roundedClip)"/>
+        <circle cx="52" cy="70" r="10" fill="#D96ECC" opacity="0.60" clip-path="url(#roundedClip)"/>
+        <circle cx="64" cy="62" r="7" fill="#F5E8FF" opacity="0.55" clip-path="url(#roundedClip)"/>
+        <rect width="128" height="128" rx="28" fill="url(#vignette)" opacity="0.25"/>
+      </svg>
+      <h1>Vibe Match</h1>
+    </div>
     <p>Turn a feeling into a design system</p>
   </div>
 
@@ -352,7 +382,10 @@
 
       <div class="action-row">
         <button class="btn-primary" id="apply-btn">Apply to Figma</button>
-        <button class="btn-secondary" id="remix-btn">Remix</button>
+        <button class="btn-secondary" id="preview-btn">Preview Frame</button>
+      </div>
+      <div class="action-row" style="margin-top: 6px;">
+        <button class="btn-secondary" id="remix-btn">↺ Remix</button>
       </div>
     </div>
   </div>
@@ -386,6 +419,7 @@
     const toneRow        = document.getElementById("tone-row");
     const rationaleEl    = document.getElementById("rationale");
     const applyBtn       = document.getElementById("apply-btn");
+    const previewBtn     = document.getElementById("preview-btn");
     const remixBtn       = document.getElementById("remix-btn");
     const historySection = document.getElementById("history-section");
     const historyChips   = document.getElementById("history-chips");
@@ -652,6 +686,17 @@ Rules:
       );
     });
 
+    // ── Preview Frame ──────────────────────────────────────────────
+    previewBtn.addEventListener("click", () => {
+      if (!currentPayload) return;
+      previewBtn.disabled = true;
+      previewBtn.textContent = "Building…";
+      parent.postMessage(
+        { pluginMessage: { type: "generate-preview", payload: currentPayload, vibe: currentVibe } },
+        "*"
+      );
+    });
+
     // ── Remix ──────────────────────────────────────────────────────
     remixBtn.addEventListener("click", () => {
       if (!currentVibe) return;
@@ -721,6 +766,18 @@ Rules:
           }
           break;
         }
+
+        case "preview-success":
+          previewBtn.disabled = false;
+          previewBtn.textContent = "Frame Created ✓";
+          setTimeout(() => { previewBtn.textContent = "Preview Frame"; }, 2500);
+          break;
+
+        case "preview-error":
+          previewBtn.disabled = false;
+          previewBtn.textContent = "Preview Frame";
+          showError("Preview error: " + (msg.message || "Unknown error."));
+          break;
 
         case "api-key-data":
           setKeyUI(msg.key || "");

@@ -134,6 +134,180 @@ function weightToStyle(weight: number): string {
   return map[weight] ?? "Regular";
 }
 
+// ─── Preview frame helpers ────────────────────────────────────────────────────
+
+async function loadFontSafe(family: string, weight: number): Promise<FontName> {
+  const style = weightToStyle(weight);
+  try {
+    await figma.loadFontAsync({ family, style });
+    return { family, style };
+  } catch {
+    try {
+      await figma.loadFontAsync({ family, style: "Regular" });
+      return { family, style: "Regular" };
+    } catch {
+      await figma.loadFontAsync({ family: "Inter", style: "Regular" });
+      return { family: "Inter", style: "Regular" };
+    }
+  }
+}
+
+function makeRect(
+  parent: FrameNode,
+  x: number, y: number, w: number, h: number,
+  color: RGB, radius = 0
+): RectangleNode {
+  const r = figma.createRectangle();
+  r.fills = [{ type: "SOLID", color }];
+  r.resize(w, h);
+  r.x = x; r.y = y;
+  r.cornerRadius = radius;
+  parent.appendChild(r);
+  return r;
+}
+
+function makeEllipse(
+  parent: FrameNode,
+  x: number, y: number, d: number,
+  color: RGB
+): EllipseNode {
+  const e = figma.createEllipse();
+  e.fills = [{ type: "SOLID", color }];
+  e.resize(d, d);
+  e.x = x; e.y = y;
+  parent.appendChild(e);
+  return e;
+}
+
+async function makeText(
+  parent: FrameNode,
+  text: string,
+  x: number, y: number, w: number,
+  font: FontName,
+  size: number,
+  color: RGB,
+  align: "LEFT" | "CENTER" = "LEFT"
+): Promise<TextNode> {
+  await figma.loadFontAsync(font);
+  const t = figma.createText();
+  t.fontName = font;
+  t.fontSize = size;
+  t.fills = [{ type: "SOLID", color }];
+  t.textAlignHorizontal = align;
+  t.textAutoResize = "HEIGHT";
+  t.resize(w, 20);
+  t.characters = text;
+  t.x = x; t.y = y;
+  parent.appendChild(t);
+  return t;
+}
+
+async function generatePreviewFrame(payload: VibePayload, vibe: string): Promise<void> {
+  const byRole = (role: string): RGB => {
+    const entry = payload.palette.find((c) => c.role === role);
+    return normaliseRGB(entry ?? payload.palette[0]);
+  };
+
+  const W = 380, H = 530, PAD = 28;
+
+  const hFont = await loadFontSafe(payload.fonts.heading.family, payload.fonts.heading.weight);
+  const bFont = await loadFontSafe(payload.fonts.body.family, payload.fonts.body.weight);
+
+  // Frame
+  const frame = figma.createFrame();
+  frame.name = `VibeMatch — ${vibe}`;
+  frame.resize(W, H);
+  frame.fills = [{ type: "SOLID", color: byRole("background") }];
+  const center = figma.viewport.center;
+  frame.x = Math.round(center.x - W / 2);
+  frame.y = Math.round(center.y - H / 2);
+
+  // Accent bar
+  makeRect(frame, PAD, PAD, 44, 3, byRole("accent"), 2);
+
+  // Vibe heading
+  const headingSize = Math.min(Math.max(payload.fonts.heading.size, 24), 40);
+  const headingNode = await makeText(
+    frame,
+    vibe.charAt(0).toUpperCase() + vibe.slice(1),
+    PAD, PAD + 14, W - PAD * 2,
+    hFont, headingSize, byRole("primary")
+  );
+
+  // Rationale subtitle
+  const ratNode = await makeText(
+    frame, payload.rationale,
+    PAD, headingNode.y + headingNode.height + 6, W - PAD * 2,
+    bFont, Math.min(payload.fonts.body.size, 13), byRole("secondary")
+  );
+
+  // Surface card
+  const cardY = Math.max(ratNode.y + ratNode.height + 20, 148);
+  const cardH = 216;
+  makeRect(frame, PAD, cardY, W - PAD * 2, cardH, byRole("surface"), 14);
+
+  // Tone word chips inside card
+  let chipX = PAD + 14;
+  for (const word of payload.tone_words) {
+    const chipW = word.length * 7 + 24;
+    makeRect(frame, chipX, cardY + 16, chipW, 24, byRole("accent"), 12);
+    await makeText(
+      frame, word,
+      chipX, cardY + 19, chipW,
+      bFont, 10, byRole("background"), "CENTER"
+    );
+    chipX += chipW + 8;
+  }
+
+  // Sample body copy inside card
+  await makeText(
+    frame,
+    "The quick brown fox jumps over the lazy dog. Design is the silent ambassador of your brand.",
+    PAD + 14, cardY + 54, W - PAD * 2 - 28,
+    bFont, Math.min(payload.fonts.body.size, 13), byRole("primary")
+  );
+
+  // CTA button
+  const btnW = 152, btnH = 42, btnY = cardY + cardH + 20;
+  makeRect(frame, PAD, btnY, btnW, btnH, byRole("primary"), 8);
+  const btnLabel = await makeText(
+    frame, "Get Started",
+    PAD, btnY, btnW,
+    hFont, 13, byRole("background"), "CENTER"
+  );
+  btnLabel.y = btnY + Math.round((btnH - btnLabel.height) / 2);
+
+  // Secondary ghost button outline
+  const btn2X = PAD + btnW + 12;
+  makeRect(frame, btn2X, btnY, btnW, btnH, byRole("surface"), 8);
+  const outlineBtn = figma.createRectangle();
+  outlineBtn.fills = [];
+  outlineBtn.strokes = [{ type: "SOLID", color: byRole("secondary") }];
+  outlineBtn.strokeWeight = 1;
+  outlineBtn.resize(btnW, btnH);
+  outlineBtn.x = btn2X; outlineBtn.y = btnY;
+  outlineBtn.cornerRadius = 8;
+  frame.appendChild(outlineBtn);
+  const btn2Label = await makeText(
+    frame, "Learn More",
+    btn2X, btnY, btnW,
+    bFont, 13, byRole("secondary"), "CENTER"
+  );
+  btn2Label.y = btnY + Math.round((btnH - btn2Label.height) / 2);
+
+  // Color swatches row
+  const D = 26, gap = 10;
+  const totalW = payload.palette.length * D + (payload.palette.length - 1) * gap;
+  let sx = Math.round((W - totalW) / 2);
+  const swatchY = H - 46;
+  for (const entry of payload.palette) {
+    makeEllipse(frame, sx, swatchY, D, normaliseRGB(entry));
+    sx += D + gap;
+  }
+
+  figma.viewport.scrollAndZoomIntoView([frame]);
+}
+
 // ─── Storage helpers ──────────────────────────────────────────────────────────
 
 const HISTORY_KEY = "vibeHistory";
@@ -192,6 +366,21 @@ figma.ui.onmessage = async (msg: { type: string; [key: string]: unknown }) => {
     case "save-history": {
       const history = msg.history as string[];
       await saveHistory(history);
+      break;
+    }
+
+    case "generate-preview": {
+      try {
+        const payload = msg.payload as VibePayload;
+        const vibe = (msg.vibe as string) || "untitled";
+        await generatePreviewFrame(payload, vibe);
+        figma.ui.postMessage({ type: "preview-success" });
+        figma.notify("✨ Preview frame created!", { timeout: 3000 });
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        figma.ui.postMessage({ type: "preview-error", message });
+        figma.notify(`❌ Preview error: ${message}`, { error: true });
+      }
       break;
     }
 
