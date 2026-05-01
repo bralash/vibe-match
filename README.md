@@ -101,3 +101,9 @@ Running the plugin again with a new vibe **updates** existing `VibeMatch/` style
 - The plugin UI is a standard browser iframe — open browser DevTools by right-clicking inside the plugin panel.
 - To reset saved history, run `figma.clientStorage.deleteAsync('vibeHistory')` in the Figma console.
 - The plugin requests network access only to `https://api.anthropic.com` (declared in `manifest.json`).
+
+---
+
+## Contact
+
+Built by **Emmanuel Asaber**. Questions, feedback, or collaboration requests — reach out at [emmanuelasaber@gmail.com](mailto:emmanuelasaber@gmail.com).
