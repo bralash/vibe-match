@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibe Match</title>
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #1e1e1e;
+      --surface:   #2a2a2a;
+      --surface2:  #333333;
+      --border:    #3a3a3a;
+      --text:      #f0f0f0;
+      --muted:     #888888;
+      --accent:    #7b5ea7;
+      --accent-h:  #9b78cc;
+      --danger:    #e05c5c;
+      --success:   #5cb85c;
+      --radius:    8px;
+      --radius-sm: 4px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      width: 320px;
+      padding: 0 0 16px;
+      overflow-x: hidden;
+    }
+
+    /* ── Header ────────────────────────────────────────────────── */
+    .header {
+      background: linear-gradient(135deg, #2d1f45 0%, #1a2a3a 100%);
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header h1 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      background: linear-gradient(90deg, #c084fc, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header p {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    /* ── Sections ──────────────────────────────────────────────── */
+    .section {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    /* ── Form controls ─────────────────────────────────────────── */
+    .row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 12px;
+      padding: 7px 10px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: var(--accent);
+    }
+    input::placeholder { color: var(--muted); }
+
+    /* ── Buttons ───────────────────────────────────────────────── */
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 12px;
+      transition: opacity 0.15s, background 0.15s;
+    }
+    button:hover { opacity: 0.88; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      flex: 1;
+    }
+    .btn-secondary {
+      background: var(--surface2);
+      color: var(--text);
+      flex: 1;
+    }
+    .btn-save {
+      background: var(--surface2);
+      color: var(--text);
+      padding: 7px 10px;
+      white-space: nowrap;
+    }
+
+    /* ── Spinner ───────────────────────────────────────────────── */
+    #loading {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 24px 16px;
+    }
+    #loading.visible { display: flex; }
+
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-text {
+      color: var(--muted);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    /* ── Results card ──────────────────────────────────────────── */
+    #results { display: none; }
+    #results.visible { display: block; }
+
+    .palette-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .swatch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      min-width: 44px;
+    }
+    .swatch-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+    .swatch-hex {
+      font-size: 9px;
+      color: var(--muted);
+      font-family: "SF Mono", "Fira Code", monospace;
+      letter-spacing: -0.2px;
+    }
+    .swatch-name {
+      font-size: 9px;
+      color: var(--muted);
+      text-transform: capitalize;
+    }
+
+    .font-pair {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .font-pair-heading {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .font-pair-body {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .font-meta {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 6px;
+      font-family: "SF Mono", "Fira Code", monospace;
+    }
+
+    .tone-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .tone-chip {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 3px 10px;
+      font-size: 11px;
+      color: var(--text);
+    }
+
+    .rationale {
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.6;
+      border-left: 2px solid var(--accent);
+      padding-left: 8px;
+      margin-bottom: 4px;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    /* ── Error ─────────────────────────────────────────────────── */
+    .error-msg {
+      display: none;
+      background: rgba(224, 92, 92, 0.12);
+      border: 1px solid rgba(224, 92, 92, 0.35);
+      border-radius: var(--radius-sm);
+      color: var(--danger);
+      font-size: 11px;
+      padding: 8px 10px;
+      margin-top: 8px;
+    }
+    .error-msg.visible { display: block; }
+
+    /* ── History ───────────────────────────────────────────────── */
+    #history-section { display: none; }
+    #history-section.visible { display: block; }
+
+    .history-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .history-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 3px 10px;
+      font-size: 11px;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .history-chip:hover { border-color: var(--accent); }
+
+    /* ── Key saved indicator ───────────────────────────────────── */
+    .key-status {
+      font-size: 10px;
+      margin-top: 4px;
+    }
+    .key-status.saved { color: var(--success); }
+    .key-status.empty { color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────────── -->
+  <div class="header">
+    <h1>Vibe Match ✦</h1>
+    <p>Turn a feeling into a design system</p>
+  </div>
+
+  <!-- ── API Key ────────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">Anthropic API Key</div>
+    <div class="row">
+      <input
+        type="password"
+        id="api-key-input"
+        placeholder="sk-ant-..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="btn-save" id="save-key-btn">Save</button>
+    </div>
+    <div class="key-status empty" id="key-status">No key saved</div>
+  </div>
+
+  <!-- ── Vibe Input ─────────────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">Your Vibe</div>
+    <div class="row">
+      <input
+        type="text"
+        id="vibe-input"
+        placeholder="e.g. Tokyo midnight, grandma's kitchen..."
+        autocomplete="off"
+      />
+      <button class="btn-primary" id="generate-btn" style="flex: 0; white-space: nowrap; padding: 7px 14px;">
+        Generate
+      </button>
+    </div>
+    <div class="error-msg" id="error-msg"></div>
+  </div>
+
+  <!-- ── Loading ────────────────────────────────────────────────── -->
+  <div id="loading">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loading-text">Consulting the vibes…</div>
+  </div>
+
+  <!-- ── Results ────────────────────────────────────────────────── -->
+  <div id="results">
+    <div class="section">
+      <div class="section-label">Palette</div>
+      <div class="palette-row" id="palette-row"></div>
+
+      <div class="section-label" style="margin-top: 10px;">Font Pairing</div>
+      <div class="font-pair" id="font-pair">
+        <div class="font-pair-heading" id="font-heading-preview">Heading</div>
+        <div class="font-pair-body" id="font-body-preview">Body text sample</div>
+        <div class="font-meta" id="font-meta"></div>
+      </div>
+
+      <div class="section-label">Tone</div>
+      <div class="tone-row" id="tone-row"></div>
+
+      <div class="rationale" id="rationale"></div>
+
+      <div class="action-row">
+        <button class="btn-primary" id="apply-btn">Apply to Figma</button>
+        <button class="btn-secondary" id="remix-btn">Remix</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── History ────────────────────────────────────────────────── -->
+  <div class="section" id="history-section">
+    <div class="section-label">Recent Vibes</div>
+    <div class="history-chips" id="history-chips"></div>
+  </div>
+
+  <script>
+    // ── State ──────────────────────────────────────────────────────
+    let currentPayload = null;
+    let currentVibe    = "";
+
+    // ── DOM refs ───────────────────────────────────────────────────
+    const apiKeyInput    = document.getElementById("api-key-input");
+    const saveKeyBtn     = document.getElementById("save-key-btn");
+    const keyStatus      = document.getElementById("key-status");
+    const vibeInput      = document.getElementById("vibe-input");
+    const generateBtn    = document.getElementById("generate-btn");
+    const loading        = document.getElementById("loading");
+    const loadingText    = document.getElementById("loading-text");
+    const results        = document.getElementById("results");
+    const errorMsg       = document.getElementById("error-msg");
+    const paletteRow     = document.getElementById("palette-row");
+    const fontPair       = document.getElementById("font-pair");
+    const fontHeading    = document.getElementById("font-heading-preview");
+    const fontBody       = document.getElementById("font-body-preview");
+    const fontMeta       = document.getElementById("font-meta");
+    const toneRow        = document.getElementById("tone-row");
+    const rationaleEl    = document.getElementById("rationale");
+    const applyBtn       = document.getElementById("apply-btn");
+    const remixBtn       = document.getElementById("remix-btn");
+    const historySection = document.getElementById("history-section");
+    const historyChips   = document.getElementById("history-chips");
+
+    // ── API key persistence (via figma.clientStorage) ─────────────
+    // localStorage is unavailable in Figma's data: iframe — all key
+    // storage goes through the plugin backend via postMessage.
+
+    let cachedApiKey = "";
+
+    function setKeyUI(key) {
+      cachedApiKey = key;
+      if (key) {
+        apiKeyInput.value = key;
+        keyStatus.textContent = "Key saved ✓";
+        keyStatus.className = "key-status saved";
+      } else {
+        keyStatus.textContent = "No key saved";
+        keyStatus.className = "key-status empty";
+      }
+    }
+
+    saveKeyBtn.addEventListener("click", () => {
+      const key = apiKeyInput.value.trim();
+      if (!key) {
+        showError("Please enter your Anthropic API key.");
+        return;
+      }
+      // Cache immediately so Generate works right away; persist in background
+      setKeyUI(key);
+      hideError();
+      parent.postMessage(
+        { pluginMessage: { type: "save-api-key", key } },
+        "*"
+      );
+    });
+
+    // ── Error helpers ──────────────────────────────────────────────
+    function showError(msg) {
+      errorMsg.textContent = msg;
+      errorMsg.classList.add("visible");
+    }
+    function hideError() {
+      errorMsg.classList.remove("visible");
+    }
+
+    // ── Loading helpers ────────────────────────────────────────────
+    const loadingPhrases = [
+      "Consulting the vibes…",
+      "Translating feelings to colors…",
+      "Summoning aesthetic souls…",
+      "Asking Claude nicely…",
+      "Decoding the vibe frequency…",
+    ];
+
+    function showLoading() {
+      loadingText.textContent =
+        loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
+      loading.classList.add("visible");
+      results.classList.remove("visible");
+      generateBtn.disabled = true;
+      applyBtn.disabled = true;
+      hideError();
+    }
+
+    function hideLoading() {
+      loading.classList.remove("visible");
+      generateBtn.disabled = false;
+      applyBtn.disabled = false;
+    }
+
+    // ── Generate ───────────────────────────────────────────────────
+    generateBtn.addEventListener("click", generate);
+    vibeInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") generate();
+    });
+
+    async function generate() {
+      const vibe = vibeInput.value.trim();
+      if (!vibe) {
+        showError("Please enter a vibe phrase.");
+        return;
+      }
+
+      const apiKey = cachedApiKey;
+      if (!apiKey) {
+        showError("Please save your Anthropic API key first.");
+        return;
+      }
+
+      currentVibe = vibe;
+      showLoading();
+
+      try {
+        const payload = await callClaude(apiKey, vibe);
+        validatePayload(payload);
+        currentPayload = payload;
+        renderResults(payload);
+        saveVibeToHistory(vibe);
+      } catch (err) {
+        showError(err.message || "Something went wrong. Please try again.");
+      } finally {
+        hideLoading();
+      }
+    }
+
+    // ── Claude API call ────────────────────────────────────────────
+    async function callClaude(apiKey, vibe) {
+      const systemPrompt = `You are a senior product designer and color theorist. When given a vibe phrase, return ONLY a valid JSON object matching this exact schema — no markdown, no explanation, no preamble, no trailing text:
+
+{
+  "palette": [
+    { "name": string, "role": "primary",    "hex": string, "r": number, "g": number, "b": number },
+    { "name": string, "role": "secondary",  "hex": string, "r": number, "g": number, "b": number },
+    { "name": string, "role": "accent",     "hex": string, "r": number, "g": number, "b": number },
+    { "name": string, "role": "background", "hex": string, "r": number, "g": number, "b": number },
+    { "name": string, "role": "surface",    "hex": string, "r": number, "g": number, "b": number }
+  ],
+  "fonts": {
+    "heading": { "family": string, "weight": number, "size": number },
+    "body":    { "family": string, "weight": number, "size": number }
+  },
+  "tone_words": [string, string, string],
+  "rationale": string
+}
+
+Rules:
+- palette must have exactly 5 entries with the roles: primary, secondary, accent, background, surface (in that order)
+- r, g, b values must be integers in range 0–255
+- hex must be a valid 6-character hex string prefixed with #
+- font family names must be real Google Fonts or system fonts
+- heading size should be between 24 and 64
+- body size should be between 12 and 18
+- tone_words must be exactly 3 evocative adjectives
+- rationale must be 1–2 sentences
+- Return ONLY the JSON object. Nothing else.`;
+
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+          "anthropic-dangerous-direct-browser-access": "true",
+        },
+        body: JSON.stringify({
+          model: "claude-haiku-4-5-20251001",
+          max_tokens: 1024,
+          system: systemPrompt,
+          messages: [{ role: "user", content: `Vibe: "${vibe}"` }],
+        }),
+      });
+
+      if (response.status === 401) {
+        throw new Error("Invalid API key. Please check your Anthropic API key and try again.");
+      }
+      if (response.status === 429) {
+        throw new Error("Rate limited. Please wait a moment and try again.");
+      }
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body.error?.message || `API error (${response.status}).`);
+      }
+
+      const data = await response.json();
+      const rawText = data.content?.[0]?.text ?? "";
+
+      // Strip any accidental markdown fences
+      const cleaned = rawText.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
+
+      let parsed;
+      try {
+        parsed = JSON.parse(cleaned);
+      } catch {
+        throw new Error("Claude returned invalid JSON. Please try again.");
+      }
+
+      return parsed;
+    }
+
+    // ── Payload validation ─────────────────────────────────────────
+    function validatePayload(p) {
+      if (!p || typeof p !== "object") throw new Error("Invalid response structure.");
+
+      if (!Array.isArray(p.palette) || p.palette.length !== 5) {
+        throw new Error("Palette must have exactly 5 colors.");
+      }
+
+      const requiredRoles = ["primary", "secondary", "accent", "background", "surface"];
+      for (const entry of p.palette) {
+        if (!entry.name || !entry.role || !entry.hex) {
+          throw new Error("Each palette entry must have name, role, and hex.");
+        }
+        if (!requiredRoles.includes(entry.role)) {
+          throw new Error(`Unknown palette role: ${entry.role}`);
+        }
+        if (typeof entry.r !== "number" || typeof entry.g !== "number" || typeof entry.b !== "number") {
+          throw new Error("Palette r/g/b values must be numbers.");
+        }
+      }
+
+      if (!p.fonts?.heading?.family || !p.fonts?.body?.family) {
+        throw new Error("Font pairing data is missing.");
+      }
+
+      if (!Array.isArray(p.tone_words) || p.tone_words.length !== 3) {
+        throw new Error("tone_words must be an array of exactly 3 strings.");
+      }
+
+      if (typeof p.rationale !== "string" || !p.rationale.trim()) {
+        throw new Error("Rationale text is missing.");
+      }
+    }
+
+    // ── Render results ─────────────────────────────────────────────
+    function renderResults(payload) {
+      // Palette
+      paletteRow.innerHTML = "";
+      for (const entry of payload.palette) {
+        const item = document.createElement("div");
+        item.className = "swatch-item";
+        item.innerHTML = `
+          <div class="swatch-circle" style="background:${entry.hex};" title="${entry.name}"></div>
+          <div class="swatch-hex">${entry.hex}</div>
+          <div class="swatch-name">${entry.role}</div>
+        `;
+        paletteRow.appendChild(item);
+      }
+
+      // Fonts
+      const h = payload.fonts.heading;
+      const b = payload.fonts.body;
+      fontHeading.textContent = h.family + " — The Heading";
+      fontHeading.style.fontFamily = `"${h.family}", sans-serif`;
+      fontHeading.style.fontWeight = h.weight;
+      fontBody.textContent = `${b.family} — body text at ${b.size}px`;
+      fontBody.style.fontFamily = `"${b.family}", sans-serif`;
+      fontBody.style.fontWeight = b.weight;
+      fontMeta.textContent = `${h.family} ${h.weight}/${h.size}px · ${b.family} ${b.weight}/${b.size}px`;
+
+      // Tone words
+      toneRow.innerHTML = "";
+      for (const word of payload.tone_words) {
+        const chip = document.createElement("span");
+        chip.className = "tone-chip";
+        chip.textContent = word;
+        toneRow.appendChild(chip);
+      }
+
+      // Rationale
+      rationaleEl.textContent = payload.rationale;
+
+      results.classList.add("visible");
+    }
+
+    // ── Apply to Figma ─────────────────────────────────────────────
+    applyBtn.addEventListener("click", () => {
+      if (!currentPayload) return;
+      applyBtn.disabled = true;
+      applyBtn.textContent = "Applying…";
+      parent.postMessage(
+        { pluginMessage: { type: "apply-styles", payload: currentPayload } },
+        "*"
+      );
+    });
+
+    // ── Remix ──────────────────────────────────────────────────────
+    remixBtn.addEventListener("click", () => {
+      if (!currentVibe) return;
+      generate();
+    });
+
+    // ── History ────────────────────────────────────────────────────
+    function saveVibeToHistory(vibe) {
+      parent.postMessage(
+        { pluginMessage: { type: "get-history" } },
+        "*"
+      );
+      // The actual save happens after we receive history-data (see onmessage)
+      window._pendingVibeToSave = vibe;
+    }
+
+    function renderHistory(history) {
+      if (!history || history.length === 0) {
+        historySection.classList.remove("visible");
+        return;
+      }
+      historySection.classList.add("visible");
+      historyChips.innerHTML = "";
+      for (const item of history) {
+        const chip = document.createElement("button");
+        chip.className = "history-chip";
+        chip.textContent = item;
+        chip.addEventListener("click", () => {
+          vibeInput.value = item;
+          generate();
+        });
+        historyChips.appendChild(chip);
+      }
+    }
+
+    // ── Messages from plugin backend ───────────────────────────────
+    window.onmessage = (event) => {
+      const msg = event.data?.pluginMessage;
+      if (!msg) return;
+
+      switch (msg.type) {
+        case "apply-success":
+          applyBtn.disabled = false;
+          applyBtn.textContent = "Applied ✓";
+          setTimeout(() => { applyBtn.textContent = "Apply to Figma"; }, 2500);
+          break;
+
+        case "apply-error":
+          applyBtn.disabled = false;
+          applyBtn.textContent = "Apply to Figma";
+          showError("Figma error: " + (msg.message || "Unknown error."));
+          break;
+
+        case "history-data": {
+          const history = msg.history || [];
+          const vibe = window._pendingVibeToSave;
+          if (vibe) {
+            const updated = [vibe, ...history.filter((h) => h !== vibe)].slice(0, 5);
+            parent.postMessage(
+              { pluginMessage: { type: "save-history", history: updated } },
+              "*"
+            );
+            renderHistory(updated);
+            window._pendingVibeToSave = null;
+          } else {
+            renderHistory(history);
+          }
+          break;
+        }
+
+        case "api-key-data":
+          setKeyUI(msg.key || "");
+          break;
+
+        case "api-key-saved":
+          setKeyUI(apiKeyInput.value.trim());
+          saveKeyBtn.disabled = false;
+          saveKeyBtn.textContent = "Save";
+          break;
+      }
+    };
+
+    // ── Init ───────────────────────────────────────────────────────
+    // Request saved API key and history from plugin backend on load
+    parent.postMessage({ pluginMessage: { type: "get-api-key" } }, "*");
+    parent.postMessage({ pluginMessage: { type: "get-history" } }, "*");
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "vibe-match",
+  "version": "1.0.0",
+  "description": "Figma plugin that turns a vibe phrase into a design system starter pack using Claude AI",
+  "scripts": {
+    "build": "tsc --noEmit false",
+    "watch": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.95.0",
+    "typescript": "^5.4.5"
+  }
+}

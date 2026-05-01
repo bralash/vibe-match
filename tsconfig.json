@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "lib": ["ES6", "DOM"],
+    "strict": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "outDir": "./",
+    "rootDir": "./",
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@figma", "./node_modules/@types"]
+  },
+  "include": ["code.ts"],
+  "exclude": ["node_modules"]
+}
