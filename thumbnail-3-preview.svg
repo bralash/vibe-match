@@ -1,0 +1,282 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080">
+  <defs>
+    <radialGradient id="bg3" cx="55%" cy="45%" r="80%">
+      <stop offset="0%" stop-color="#0a0818"/>
+      <stop offset="100%" stop-color="#030308"/>
+    </radialGradient>
+    <linearGradient id="titleg3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <linearGradient id="canvas-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0f0f1e"/>
+    </linearGradient>
+    <linearGradient id="card-shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="vig3" cx="50%" cy="50%" r="80%">
+      <stop offset="40%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.70"/>
+    </radialGradient>
+    <linearGradient id="panel-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1e1e"/>
+      <stop offset="100%" stop-color="#161616"/>
+    </linearGradient>
+    <linearGradient id="btn-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7b5ea7"/>
+      <stop offset="100%" stop-color="#5b8ad4"/>
+    </linearGradient>
+    <linearGradient id="preview-btn-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <filter id="blur-xl3"><feGaussianBlur stdDeviation="90"/></filter>
+    <filter id="frame-shadow">
+      <feDropShadow dx="0" dy="20" stdDeviation="40" flood-color="#000" flood-opacity="0.7"/>
+    </filter>
+    <filter id="panel-shadow">
+      <feDropShadow dx="-8" dy="0" stdDeviation="24" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <clipPath id="frame-clip">
+      <rect x="310" y="88" width="420" height="580" rx="16"/>
+    </clipPath>
+    <clipPath id="canvas-clip">
+      <rect x="60" y="60" width="1240" height="960" rx="20"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bg3)"/>
+
+  <!-- Glow blobs -->
+  <circle cx="680"  cy="540" r="600" fill="#3b0764" opacity="0.20" filter="url(#blur-xl3)"/>
+  <circle cx="1700" cy="400" r="400" fill="#1e3a5f" opacity="0.16" filter="url(#blur-xl3)"/>
+  <circle cx="200"  cy="900" r="300" fill="#0c4a6e" opacity="0.12" filter="url(#blur-xl3)"/>
+
+  <!-- ───── HEADER TEXT ───── -->
+  <text x="680" y="46" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" fill="#444" text-anchor="middle" letter-spacing="4">VIBE MATCH · PREVIEW FRAMES</text>
+
+  <!-- ───── FIGMA CANVAS AREA ───── -->
+  <rect x="60" y="60" width="1240" height="960" rx="20" fill="url(#canvas-bg)" clip-path="url(#canvas-clip)"/>
+
+  <!-- Subtle dot-grid pattern on canvas -->
+  <pattern id="dot-grid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="#ffffff" fill-opacity="0.04"/>
+  </pattern>
+  <rect x="60" y="60" width="1240" height="960" fill="url(#dot-grid)" clip-path="url(#canvas-clip)"/>
+
+  <!-- Canvas border -->
+  <rect x="60" y="60" width="1240" height="960" rx="20" fill="none" stroke="#1e1e3a" stroke-width="1.5"/>
+
+  <!-- "Figma" canvas label -->
+  <text x="100" y="98" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#333">Canvas</text>
+  <circle cx="88" cy="92" r="5" fill="#2a2a2a" stroke="#333" stroke-width="1"/>
+
+  <!-- ── GENERATED PREVIEW FRAME (Tokyo Midnight palette) ── -->
+  <!-- Frame shadow -->
+  <rect x="310" y="88" width="420" height="580" rx="16" fill="#0A0A14" filter="url(#frame-shadow)"/>
+
+  <!-- Frame background -->
+  <rect x="310" y="88" width="420" height="580" rx="16" fill="#0A0A14"/>
+  <rect x="310" y="88" width="420" height="580" rx="16" fill="url(#card-shine)"/>
+
+  <!-- Frame: accent bar -->
+  <rect x="338" y="116" width="48" height="3" rx="1.5" fill="#F472B6"/>
+
+  <!-- Frame: vibe heading -->
+  <text x="338" y="148" font-family="Helvetica Neue, Arial, sans-serif" font-size="28" font-weight="800" fill="#8B5CF6">Tokyo Midnight</text>
+
+  <!-- Frame: rationale subtitle -->
+  <text x="338" y="170" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#38BDF8">A neon-lit city at 3am, electric</text>
+  <text x="338" y="186" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#38BDF8">and melancholic in equal measure.</text>
+
+  <!-- Frame: surface card -->
+  <rect x="338" y="204" width="364" height="220" rx="12" fill="#1E1B4B"/>
+
+  <!-- Tone chips inside card -->
+  <rect x="354" y="220" width="66"  height="24" rx="12" fill="#F472B6"/>
+  <text x="387" y="237" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#0A0A14" text-anchor="middle">moody</text>
+  <rect x="430" y="220" width="72"  height="24" rx="12" fill="#F472B6"/>
+  <text x="466" y="237" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#0A0A14" text-anchor="middle">electric</text>
+  <rect x="512" y="220" width="52"  height="24" rx="12" fill="#F472B6"/>
+  <text x="538" y="237" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#0A0A14" text-anchor="middle">noir</text>
+
+  <!-- Sample copy inside card -->
+  <text x="354" y="268" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#c4b5fd">The quick brown fox jumps over the</text>
+  <text x="354" y="284" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#c4b5fd">lazy dog. Design is the silent</text>
+  <text x="354" y="300" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#c4b5fd">ambassador of your brand.</text>
+
+  <!-- Secondary card block -->
+  <rect x="354" y="320" width="160" height="80" rx="8" fill="#16162A"/>
+  <rect x="354" y="320" width="160" height="80" rx="8" fill="none" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="374" y="346" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#555">surface</text>
+  <text x="374" y="362" font-family="Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#8B5CF6">#1E1B4B</text>
+  <text x="374" y="378" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#444">VibeMatch/surface</text>
+  <rect x="526" y="320" width="160" height="80" rx="8" fill="#0d0d20"/>
+  <rect x="526" y="320" width="160" height="80" rx="8" fill="none" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="546" y="346" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#555">secondary</text>
+  <text x="546" y="362" font-family="Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#38BDF8">#38BDF8</text>
+  <text x="546" y="378" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#444">VibeMatch/secondary</text>
+
+  <!-- Frame: CTA buttons -->
+  <rect x="338" y="440" width="168" height="42" rx="8" fill="#8B5CF6"/>
+  <text x="422" y="466" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">Get Started</text>
+  <rect x="518" y="440" width="168" height="42" rx="8" fill="#1E1B4B"/>
+  <rect x="518" y="440" width="168" height="42" rx="8" fill="none" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="602" y="466" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#38BDF8" text-anchor="middle">Learn More</text>
+
+  <!-- Frame: color swatches row -->
+  <circle cx="356" cy="530" r="18" fill="#8B5CF6"/>
+  <circle cx="400" cy="530" r="18" fill="#38BDF8"/>
+  <circle cx="444" cy="530" r="18" fill="#F472B6"/>
+  <circle cx="488" cy="530" r="18" fill="#0A0A14"/>
+  <circle cx="488" cy="530" r="17.5" fill="none" stroke="#333" stroke-width="1"/>
+  <circle cx="532" cy="530" r="18" fill="#1E1B4B"/>
+
+  <!-- Frame: role labels under swatches -->
+  <text x="356" y="558" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">primary</text>
+  <text x="400" y="558" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">secondary</text>
+  <text x="444" y="558" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">accent</text>
+  <text x="488" y="558" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">background</text>
+  <text x="532" y="558" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">surface</text>
+
+  <!-- Frame: border highlight -->
+  <rect x="310" y="88" width="420" height="580" rx="16" fill="none" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.25"/>
+
+  <!-- ── SECOND FRAME (partially visible, offset) ── -->
+  <rect x="780" y="180" width="380" height="520" rx="16" fill="#1C0F07" opacity="0.85"/>
+  <rect x="780" y="180" width="380" height="4" rx="2" fill="#D97706"/>
+  <text x="808" y="222" font-family="Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="800" fill="#fbbf24">Grandma's Kitchen</text>
+  <text x="808" y="244" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#92400e">Warmth, spice, and nostalgia in every pixel.</text>
+  <rect x="808" y="264" width="320" height="160" rx="10" fill="#2D1D12"/>
+  <circle cx="832" cy="462" r="16" fill="#B45309"/>
+  <circle cx="870" cy="462" r="16" fill="#166534"/>
+  <circle cx="908" cy="462" r="16" fill="#DC2626"/>
+  <circle cx="946" cy="462" r="16" fill="#1C0F07"/>
+  <circle cx="946" cy="462" r="15.5" fill="none" stroke="#2a1a0a" stroke-width="1"/>
+  <circle cx="984" cy="462" r="16" fill="#2D1D12"/>
+  <rect x="808" y="496" width="148" height="38" rx="8" fill="#D97706"/>
+  <text x="882" y="519" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Get Started</text>
+  <rect x="780" y="180" width="380" height="520" rx="16" fill="none" stroke="#D97706" stroke-width="1" stroke-opacity="0.20"/>
+
+  <!-- ── THIRD FRAME (barely visible, behind) ── -->
+  <rect x="1020" y="280" width="340" height="460" rx="16" fill="#0f0f0f" opacity="0.70"/>
+  <rect x="1020" y="280" width="340" height="4" rx="2" fill="#EF4444"/>
+  <text x="1048" y="322" font-family="Helvetica Neue, Arial, sans-serif" font-size="20" font-weight="800" fill="#e5e5e5">Soft Brutalism</text>
+  <rect x="1048" y="344" width="284" height="130" rx="8" fill="#171717"/>
+  <circle cx="1072" cy="502" r="14" fill="#E5E5E5"/>
+  <circle cx="1108" cy="502" r="14" fill="#737373"/>
+  <circle cx="1144" cy="502" r="14" fill="#EF4444"/>
+  <circle cx="1180" cy="502" r="14" fill="#171717"/>
+  <circle cx="1180" cy="502" r="13.5" fill="none" stroke="#333" stroke-width="1"/>
+  <circle cx="1216" cy="502" r="14" fill="#262626"/>
+  <rect x="1020" y="280" width="340" height="460" rx="16" fill="none" stroke="#EF4444" stroke-width="1" stroke-opacity="0.18"/>
+
+  <!-- ── PLUGIN PANEL (right side) ── -->
+  <rect x="1340" y="0" width="580" height="1080" fill="url(#panel-grad)" filter="url(#panel-shadow)"/>
+  <rect x="1340" y="0" width="1"   height="1080" fill="#2a2a2a"/>
+
+  <!-- Panel header -->
+  <rect x="1340" y="0" width="580" height="68" fill="#1a1a1a"/>
+  <rect x="1340" y="68" width="580" height="1" fill="#2a2a2a"/>
+
+  <!-- Panel logo + name -->
+  <g transform="translate(1364, 14)">
+    <rect width="40" height="40" rx="9" fill="#0f0f0f"/>
+    <circle cx="14"  cy="16" r="8.5" fill="#FF5C5C" opacity="0.92"/>
+    <circle cx="26"  cy="16" r="8.5" fill="#FFD44F" opacity="0.88"/>
+    <circle cx="20"  cy="25" r="8.5" fill="#7B6EF6" opacity="0.90"/>
+    <circle cx="20"  cy="14" r="3.8" fill="#FF9A3C" opacity="0.72"/>
+    <circle cx="24"  cy="21" r="3.2" fill="#C4A8F5" opacity="0.58"/>
+    <circle cx="16"  cy="21" r="3.2" fill="#D96ECC" opacity="0.58"/>
+    <circle cx="20"  cy="18" r="2.2" fill="#F5E8FF" opacity="0.50"/>
+  </g>
+  <text x="1416" y="36" font-family="Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#f0f0f0">Vibe Match</text>
+  <text x="1416" y="54" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#666">Turn a feeling into a design system</text>
+
+  <!-- API key section -->
+  <text x="1364" y="102" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#555" letter-spacing="1">ANTHROPIC API KEY</text>
+  <rect x="1364" y="110" width="432" height="36" rx="6" fill="#252525" stroke="#333" stroke-width="1"/>
+  <text x="1380" y="133" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#3a3a3a">••••••••••••••••••••••</text>
+  <rect x="1736" y="114" width="52" height="28" rx="5" fill="#2a2a2a" stroke="#333" stroke-width="1"/>
+  <text x="1762" y="133" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#888" text-anchor="middle">Save</text>
+  <text x="1364" y="158" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#4ade80">Key saved ✓</text>
+
+  <!-- Vibe input section -->
+  <text x="1364" y="186" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#555" letter-spacing="1">YOUR VIBE</text>
+  <rect x="1364" y="194" width="360" height="36" rx="6" fill="#252525" stroke="#7b5ea7" stroke-width="1.5"/>
+  <text x="1380" y="217" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#c4b5fd">Tokyo midnight</text>
+  <rect x="1736" y="194" width="60" height="36" rx="6" fill="url(#btn-grad)"/>
+  <text x="1766" y="217" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Go</text>
+
+  <!-- Results section -->
+  <text x="1364" y="258" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#555" letter-spacing="1">PALETTE</text>
+  <circle cx="1382" cy="278" r="14" fill="#8B5CF6"/>
+  <circle cx="1418" cy="278" r="14" fill="#38BDF8"/>
+  <circle cx="1454" cy="278" r="14" fill="#F472B6"/>
+  <circle cx="1490" cy="278" r="14" fill="#0A0A14"/>
+  <circle cx="1490" cy="278" r="13.5" fill="none" stroke="#333" stroke-width="1"/>
+  <circle cx="1526" cy="278" r="14" fill="#1E1B4B"/>
+
+  <text x="1382" y="304" font-family="monospace" font-size="9" fill="#444" text-anchor="middle">#8B5CF6</text>
+  <text x="1418" y="304" font-family="monospace" font-size="9" fill="#444" text-anchor="middle">#38BDF8</text>
+  <text x="1454" y="304" font-family="monospace" font-size="9" fill="#444" text-anchor="middle">#F472B6</text>
+  <text x="1490" y="304" font-family="monospace" font-size="9" fill="#444" text-anchor="middle">#0A0A14</text>
+  <text x="1526" y="304" font-family="monospace" font-size="9" fill="#444" text-anchor="middle">#1E1B4B</text>
+
+  <!-- Font pairing -->
+  <text x="1364" y="332" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#555" letter-spacing="1">FONT PAIRING</text>
+  <rect x="1364" y="340" width="432" height="68" rx="8" fill="#222"/>
+  <text x="1382" y="364" font-family="Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#c4b5fd">Space Grotesk — The Heading</text>
+  <text x="1382" y="384" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#666">Inter — body text at 14px</text>
+  <text x="1382" y="400" font-family="monospace" font-size="9" fill="#444">Space Grotesk 700/36px · Inter 400/14px</text>
+
+  <!-- Tone words -->
+  <text x="1364" y="430" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#555" letter-spacing="1">TONE</text>
+  <rect x="1364" y="438" width="70"  height="26" rx="13" fill="#1e1533" stroke="#4c1d95" stroke-width="1"/>
+  <text x="1399" y="456" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#c084fc" text-anchor="middle">moody</text>
+  <rect x="1446" y="438" width="76"  height="26" rx="13" fill="#1e1533" stroke="#4c1d95" stroke-width="1"/>
+  <text x="1484" y="456" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#c084fc" text-anchor="middle">electric</text>
+  <rect x="1534" y="438" width="54"  height="26" rx="13" fill="#1e1533" stroke="#4c1d95" stroke-width="1"/>
+  <text x="1561" y="456" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#c084fc" text-anchor="middle">noir</text>
+
+  <!-- Rationale -->
+  <text x="1364" y="486" font-family="Georgia, serif" font-size="12" font-style="italic" fill="#555">Deep violet and cyan pulse against near-</text>
+  <text x="1364" y="502" font-family="Georgia, serif" font-size="12" font-style="italic" fill="#555">black, evoking a neon-lit city at 3am.</text>
+
+  <!-- Action buttons -->
+  <rect x="1364" y="522" width="208" height="42" rx="8" fill="url(#btn-grad)"/>
+  <text x="1468" y="548" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">Apply to Figma</text>
+
+  <!-- Preview Frame button — HIGHLIGHTED (this is the feature being shown) -->
+  <rect x="1582" y="518" width="214" height="50" rx="8" fill="url(#preview-btn-grad)"/>
+  <!-- Glow behind button -->
+  <rect x="1576" y="512" width="226" height="62" rx="10" fill="url(#preview-btn-grad)" opacity="0.20"/>
+  <text x="1689" y="548" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Preview Frame</text>
+  <!-- "Active" indicator -->
+  <text x="1689" y="566" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="rgba(255,255,255,0.7)" text-anchor="middle">Building…</text>
+
+  <!-- Remix button -->
+  <rect x="1364" y="578" width="432" height="38" rx="8" fill="#252525" stroke="#333" stroke-width="1"/>
+  <text x="1580" y="602" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#666" text-anchor="middle">↺  Remix</text>
+
+  <!-- History section -->
+  <text x="1364" y="638" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#555" letter-spacing="1">RECENT VIBES</text>
+  <rect x="1364" y="646" width="148" height="28" rx="14" fill="#222" stroke="#333" stroke-width="1"/>
+  <text x="1438" y="665" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#777" text-anchor="middle">Tokyo midnight</text>
+  <rect x="1524" y="646" width="164" height="28" rx="14" fill="#222" stroke="#333" stroke-width="1"/>
+  <text x="1606" y="665" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#777" text-anchor="middle">grandma's kitchen</text>
+  <rect x="1364" y="686" width="128" height="28" rx="14" fill="#222" stroke="#333" stroke-width="1"/>
+  <text x="1428" y="705" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#777" text-anchor="middle">soft brutalism</text>
+
+  <!-- Divider in panel -->
+  <rect x="1340" y="740" width="580" height="1" fill="#222"/>
+
+  <!-- Large title overlay at bottom of canvas -->
+  <text x="680" y="980" font-family="Helvetica Neue, Arial, sans-serif" font-size="62" font-weight="800" fill="url(#titleg3)" text-anchor="middle">See your design system on canvas. Instantly.</text>
+
+  <!-- Global vignette -->
+  <rect width="1920" height="1080" fill="url(#vig3)" opacity="0.25"/>
+</svg>

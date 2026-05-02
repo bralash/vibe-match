@@ -1,0 +1,215 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0e0820"/>
+      <stop offset="100%" stop-color="#04040c"/>
+    </radialGradient>
+    <linearGradient id="titleg2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <radialGradient id="vig2" cx="50%" cy="50%" r="80%">
+      <stop offset="50%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.65"/>
+    </radialGradient>
+    <filter id="blur-xl2"><feGaussianBlur stdDeviation="100"/></filter>
+    <filter id="blur-md2"><feGaussianBlur stdDeviation="50"/></filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bg2)"/>
+
+  <!-- Glow blobs -->
+  <circle cx="380"  cy="540" r="420" fill="#4c1d95" opacity="0.18" filter="url(#blur-xl2)"/>
+  <circle cx="960"  cy="300" r="350" fill="#1e3a5f" opacity="0.14" filter="url(#blur-xl2)"/>
+  <circle cx="1580" cy="540" r="380" fill="#14532d" opacity="0.12" filter="url(#blur-xl2)"/>
+
+  <!-- ───── HEADER ───── -->
+  <!-- Small logo -->
+  <g transform="translate(80, 48)">
+    <rect width="52" height="52" rx="12" fill="#0f0f0f"/>
+    <circle cx="18.5" cy="21" r="11" fill="#FF5C5C" opacity="0.92"/>
+    <circle cx="33.5" cy="21" r="11" fill="#FFD44F" opacity="0.88"/>
+    <circle cx="26"   cy="33" r="11" fill="#7B6EF6" opacity="0.90"/>
+    <circle cx="26"   cy="19" r="5"  fill="#FF9A3C" opacity="0.72"/>
+    <circle cx="31"   cy="28" r="4"  fill="#C4A8F5" opacity="0.58"/>
+    <circle cx="21"   cy="28" r="4"  fill="#D96ECC" opacity="0.58"/>
+    <circle cx="26"   cy="25" r="3"  fill="#F5E8FF" opacity="0.50"/>
+  </g>
+
+  <!-- Title block -->
+  <text x="960" y="96" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" fill="#444" text-anchor="middle" letter-spacing="4">VIBE MATCH · PALETTE GENERATOR</text>
+  <text x="960" y="168" font-family="Helvetica Neue, Arial, sans-serif" font-size="80" font-weight="800" fill="url(#titleg2)" text-anchor="middle" letter-spacing="-1">Any vibe. Any aesthetic.</text>
+  <text x="960" y="218" font-family="Helvetica Neue, Arial, sans-serif" font-size="22" fill="#555" text-anchor="middle">Describe a feeling — Claude generates a complete design system in seconds.</text>
+
+  <!-- ───── THREE VIBE CARDS ───── -->
+
+  <!-- ── Card 1: Tokyo Midnight (x=80) ── -->
+  <rect x="80" y="270" width="568" height="740" rx="24" fill="#0c0c1e" stroke="#1e1e3a" stroke-width="1.5"/>
+  <!-- Accent top bar -->
+  <rect x="80" y="270" width="568" height="4" rx="2" fill="#8B5CF6"/>
+
+  <!-- Vibe input mockup -->
+  <rect x="112" y="302" width="504" height="52" rx="10" fill="#13132a" stroke="#2a2a4a" stroke-width="1"/>
+  <text x="136" y="334" font-family="Helvetica Neue, Arial, sans-serif" font-size="18" fill="#8888aa">Type a vibe...</text>
+  <rect x="556" y="310" width="44" height="36" rx="8" fill="#8B5CF6"/>
+  <text x="578" y="333" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#fff" text-anchor="middle">GO</text>
+
+  <!-- Vibe phrase -->
+  <text x="128" y="404" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-style="italic" fill="#c4b5fd">"Tokyo Midnight"</text>
+
+  <!-- 5 Color swatches -->
+  <circle cx="160" cy="476" r="40" fill="#8B5CF6"/>
+  <circle cx="270" cy="476" r="40" fill="#38BDF8"/>
+  <circle cx="380" cy="476" r="40" fill="#F472B6"/>
+  <circle cx="490" cy="476" r="40" fill="#0A0A14"/>
+  <circle cx="490" cy="476" r="39.5" fill="none" stroke="#2a2a3a" stroke-width="1"/>
+  <circle cx="600" cy="476" r="40" fill="#1E1B4B"/>
+
+  <!-- Role labels -->
+  <text x="160" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#555" text-anchor="middle">primary</text>
+  <text x="270" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#555" text-anchor="middle">secondary</text>
+  <text x="380" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#555" text-anchor="middle">accent</text>
+  <text x="490" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#555" text-anchor="middle">background</text>
+  <text x="600" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#555" text-anchor="middle">surface</text>
+
+  <!-- Hex labels -->
+  <text x="160" y="548" font-family="monospace" font-size="10" fill="#3a3a5a" text-anchor="middle">#8B5CF6</text>
+  <text x="270" y="548" font-family="monospace" font-size="10" fill="#3a3a5a" text-anchor="middle">#38BDF8</text>
+  <text x="380" y="548" font-family="monospace" font-size="10" fill="#3a3a5a" text-anchor="middle">#F472B6</text>
+  <text x="490" y="548" font-family="monospace" font-size="10" fill="#3a3a5a" text-anchor="middle">#0A0A14</text>
+  <text x="600" y="548" font-family="monospace" font-size="10" fill="#3a3a5a" text-anchor="middle">#1E1B4B</text>
+
+  <!-- Font pairing box -->
+  <rect x="112" y="572" width="504" height="90" rx="10" fill="#13132a"/>
+  <text x="136" y="604" font-family="Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="700" fill="#c4b5fd">Space Grotesk</text>
+  <text x="136" y="624" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#444">Heading · 700 · 36px</text>
+  <line x1="334" y1="580" x2="334" y2="654" stroke="#222" stroke-width="1"/>
+  <text x="358" y="604" font-family="Helvetica Neue, Arial, sans-serif" font-size="18" fill="#888">Inter</text>
+  <text x="358" y="624" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#444">Body · 400 · 14px</text>
+
+  <!-- Tone word chips -->
+  <rect x="112" y="680" width="80"  height="28" rx="14" fill="#1e1533" stroke="#4c1d95" stroke-width="1"/>
+  <text x="152" y="699" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#c084fc" text-anchor="middle">moody</text>
+  <rect x="204" y="680" width="84"  height="28" rx="14" fill="#1e1533" stroke="#4c1d95" stroke-width="1"/>
+  <text x="246" y="699" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#c084fc" text-anchor="middle">electric</text>
+  <rect x="300" y="680" width="56"  height="28" rx="14" fill="#1e1533" stroke="#4c1d95" stroke-width="1"/>
+  <text x="328" y="699" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#c084fc" text-anchor="middle">noir</text>
+
+  <!-- Rationale -->
+  <text x="128" y="744" font-family="Georgia, serif" font-size="14" font-style="italic" fill="#444">Deep violet and cyan pulse against near-black,</text>
+  <text x="128" y="764" font-family="Georgia, serif" font-size="14" font-style="italic" fill="#444">evoking a neon-lit city at 3am.</text>
+
+  <!-- Apply button mockup -->
+  <rect x="112" y="800" width="248" height="44" rx="10" fill="#8B5CF6"/>
+  <text x="236" y="827" font-family="Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">Apply to Figma</text>
+  <rect x="372" y="800" width="244" height="44" rx="10" fill="#1a1a30" stroke="#2a2a4a" stroke-width="1"/>
+  <text x="494" y="827" font-family="Helvetica Neue, Arial, sans-serif" font-size="14" fill="#666" text-anchor="middle">Preview Frame</text>
+
+  <!-- ── Card 2: Grandma's Kitchen (x=676) ── -->
+  <rect x="676" y="270" width="568" height="740" rx="24" fill="#130b04" stroke="#2a1a0a" stroke-width="1.5"/>
+  <rect x="676" y="270" width="568" height="4" rx="2" fill="#D97706"/>
+
+  <rect x="708" y="302" width="504" height="52" rx="10" fill="#1a1005" stroke="#2a1a08" stroke-width="1"/>
+  <text x="732" y="334" font-family="Helvetica Neue, Arial, sans-serif" font-size="18" fill="#5a4020">Type a vibe...</text>
+  <rect x="1152" y="310" width="44" height="36" rx="8" fill="#D97706"/>
+  <text x="1174" y="333" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#fff" text-anchor="middle">GO</text>
+
+  <text x="724" y="404" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-style="italic" fill="#fbbf24">"Grandma's Kitchen"</text>
+
+  <circle cx="756"  cy="476" r="40" fill="#B45309"/>
+  <circle cx="866"  cy="476" r="40" fill="#166534"/>
+  <circle cx="976"  cy="476" r="40" fill="#DC2626"/>
+  <circle cx="1086" cy="476" r="40" fill="#1C0F07"/>
+  <circle cx="1086" cy="476" r="39.5" fill="none" stroke="#2a1a0a" stroke-width="1"/>
+  <circle cx="1196" cy="476" r="40" fill="#2D1D12"/>
+
+  <text x="756"  y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5a3a1a" text-anchor="middle">primary</text>
+  <text x="866"  y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5a3a1a" text-anchor="middle">secondary</text>
+  <text x="976"  y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5a3a1a" text-anchor="middle">accent</text>
+  <text x="1086" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5a3a1a" text-anchor="middle">background</text>
+  <text x="1196" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5a3a1a" text-anchor="middle">surface</text>
+
+  <text x="756"  y="548" font-family="monospace" font-size="10" fill="#3a2010" text-anchor="middle">#B45309</text>
+  <text x="866"  y="548" font-family="monospace" font-size="10" fill="#3a2010" text-anchor="middle">#166534</text>
+  <text x="976"  y="548" font-family="monospace" font-size="10" fill="#3a2010" text-anchor="middle">#DC2626</text>
+  <text x="1086" y="548" font-family="monospace" font-size="10" fill="#3a2010" text-anchor="middle">#1C0F07</text>
+  <text x="1196" y="548" font-family="monospace" font-size="10" fill="#3a2010" text-anchor="middle">#2D1D12</text>
+
+  <rect x="708" y="572" width="504" height="90" rx="10" fill="#1a1005"/>
+  <text x="732" y="604" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#fbbf24">Playfair Display</text>
+  <text x="732" y="624" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#5a3a1a">Heading · 700 · 40px</text>
+  <line x1="930" y1="580" x2="930" y2="654" stroke="#2a1a08" stroke-width="1"/>
+  <text x="954" y="604" font-family="Georgia, serif" font-size="18" fill="#7a5a3a">Lora</text>
+  <text x="954" y="624" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#5a3a1a">Body · 400 · 15px</text>
+
+  <rect x="708"  y="680" width="56"  height="28" rx="14" fill="#2d1800" stroke="#92400e" stroke-width="1"/>
+  <text x="736" y="699" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#fbbf24" text-anchor="middle">warm</text>
+  <rect x="776"  y="680" width="100" height="28" rx="14" fill="#2d1800" stroke="#92400e" stroke-width="1"/>
+  <text x="826" y="699" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#fbbf24" text-anchor="middle">nostalgic</text>
+  <rect x="888"  y="680" width="56"  height="28" rx="14" fill="#2d1800" stroke="#92400e" stroke-width="1"/>
+  <text x="916" y="699" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#fbbf24" text-anchor="middle">cozy</text>
+
+  <text x="724" y="744" font-family="Georgia, serif" font-size="14" font-style="italic" fill="#5a3a1a">Amber warmth and forest green ground a palette</text>
+  <text x="724" y="764" font-family="Georgia, serif" font-size="14" font-style="italic" fill="#5a3a1a">that smells like cinnamon and old wood.</text>
+
+  <rect x="708" y="800" width="248" height="44" rx="10" fill="#D97706"/>
+  <text x="832" y="827" font-family="Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">Apply to Figma</text>
+  <rect x="968" y="800" width="244" height="44" rx="10" fill="#1a1005" stroke="#2a1a08" stroke-width="1"/>
+  <text x="1090" y="827" font-family="Helvetica Neue, Arial, sans-serif" font-size="14" fill="#5a3a1a" text-anchor="middle">Preview Frame</text>
+
+  <!-- ── Card 3: Soft Brutalism (x=1272) ── -->
+  <rect x="1272" y="270" width="568" height="740" rx="24" fill="#0f0f0f" stroke="#222" stroke-width="1.5"/>
+  <rect x="1272" y="270" width="568" height="4" rx="2" fill="#EF4444"/>
+
+  <rect x="1304" y="302" width="504" height="52" rx="10" fill="#171717" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="1328" y="334" font-family="Helvetica Neue, Arial, sans-serif" font-size="18" fill="#444">Type a vibe...</text>
+  <rect x="1748" y="310" width="44" height="36" rx="8" fill="#EF4444"/>
+  <text x="1770" y="333" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#fff" text-anchor="middle">GO</text>
+
+  <text x="1320" y="404" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-style="italic" fill="#e5e5e5">"Soft Brutalism"</text>
+
+  <circle cx="1352" cy="476" r="40" fill="#E5E5E5"/>
+  <circle cx="1462" cy="476" r="40" fill="#737373"/>
+  <circle cx="1572" cy="476" r="40" fill="#EF4444"/>
+  <circle cx="1682" cy="476" r="40" fill="#171717"/>
+  <circle cx="1682" cy="476" r="39.5" fill="none" stroke="#333" stroke-width="1"/>
+  <circle cx="1792" cy="476" r="40" fill="#262626"/>
+
+  <text x="1352" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#444" text-anchor="middle">primary</text>
+  <text x="1462" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#444" text-anchor="middle">secondary</text>
+  <text x="1572" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#444" text-anchor="middle">accent</text>
+  <text x="1682" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#444" text-anchor="middle">background</text>
+  <text x="1792" y="532" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#444" text-anchor="middle">surface</text>
+
+  <text x="1352" y="548" font-family="monospace" font-size="10" fill="#444" text-anchor="middle">#E5E5E5</text>
+  <text x="1462" y="548" font-family="monospace" font-size="10" fill="#444" text-anchor="middle">#737373</text>
+  <text x="1572" y="548" font-family="monospace" font-size="10" fill="#444" text-anchor="middle">#EF4444</text>
+  <text x="1682" y="548" font-family="monospace" font-size="10" fill="#444" text-anchor="middle">#171717</text>
+  <text x="1792" y="548" font-family="monospace" font-size="10" fill="#444" text-anchor="middle">#262626</text>
+
+  <rect x="1304" y="572" width="504" height="90" rx="10" fill="#171717"/>
+  <text x="1328" y="604" font-family="Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="700" fill="#e5e5e5">Space Mono</text>
+  <text x="1328" y="624" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#444">Heading · 700 · 32px</text>
+  <line x1="1526" y1="580" x2="1526" y2="654" stroke="#222" stroke-width="1"/>
+  <text x="1550" y="604" font-family="Helvetica Neue, Arial, sans-serif" font-size="18" fill="#555">Work Sans</text>
+  <text x="1550" y="624" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#444">Body · 400 · 14px</text>
+
+  <rect x="1304" y="680" width="48"  height="28" rx="14" fill="#1c1c1c" stroke="#333" stroke-width="1"/>
+  <text x="1328" y="699" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#999" text-anchor="middle">raw</text>
+  <rect x="1364" y="680" width="56"  height="28" rx="14" fill="#1c1c1c" stroke="#333" stroke-width="1"/>
+  <text x="1392" y="699" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#999" text-anchor="middle">bold</text>
+  <rect x="1432" y="680" width="60"  height="28" rx="14" fill="#1c1c1c" stroke="#333" stroke-width="1"/>
+  <text x="1462" y="699" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#999" text-anchor="middle">clean</text>
+
+  <text x="1320" y="744" font-family="Georgia, serif" font-size="14" font-style="italic" fill="#444">Concrete grays and stark white offset a bold</text>
+  <text x="1320" y="764" font-family="Georgia, serif" font-size="14" font-style="italic" fill="#444">red accent — unapologetically structural.</text>
+
+  <rect x="1304" y="800" width="248" height="44" rx="10" fill="#EF4444"/>
+  <text x="1428" y="827" font-family="Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle">Apply to Figma</text>
+  <rect x="1564" y="800" width="244" height="44" rx="10" fill="#171717" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="1686" y="827" font-family="Helvetica Neue, Arial, sans-serif" font-size="14" fill="#555" text-anchor="middle">Preview Frame</text>
+
+  <!-- Global vignette -->
+  <rect width="1920" height="1080" fill="url(#vig2)" opacity="0.35"/>
+</svg>
