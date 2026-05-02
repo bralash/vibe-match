@@ -145,34 +145,105 @@
   <!-- Frame: border highlight -->
   <rect x="310" y="88" width="420" height="580" rx="16" fill="none" stroke="#8B5CF6" stroke-width="1" stroke-opacity="0.25"/>
 
-  <!-- ── SECOND FRAME (partially visible, offset) ── -->
-  <rect x="780" y="180" width="380" height="520" rx="16" fill="#1C0F07" opacity="0.85"/>
+  <!-- ── SECOND FRAME: Grandma's Kitchen ── -->
+  <rect x="780" y="180" width="380" height="520" rx="16" fill="#1C0F07" opacity="0.92"/>
   <rect x="780" y="180" width="380" height="4" rx="2" fill="#D97706"/>
-  <text x="808" y="222" font-family="Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="800" fill="#fbbf24">Grandma's Kitchen</text>
-  <text x="808" y="244" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#92400e">Warmth, spice, and nostalgia in every pixel.</text>
-  <rect x="808" y="264" width="320" height="160" rx="10" fill="#2D1D12"/>
-  <circle cx="832" cy="462" r="16" fill="#B45309"/>
-  <circle cx="870" cy="462" r="16" fill="#166534"/>
-  <circle cx="908" cy="462" r="16" fill="#DC2626"/>
-  <circle cx="946" cy="462" r="16" fill="#1C0F07"/>
-  <circle cx="946" cy="462" r="15.5" fill="none" stroke="#2a1a0a" stroke-width="1"/>
-  <circle cx="984" cy="462" r="16" fill="#2D1D12"/>
-  <rect x="808" y="496" width="148" height="38" rx="8" fill="#D97706"/>
-  <text x="882" y="519" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Get Started</text>
-  <rect x="780" y="180" width="380" height="520" rx="16" fill="none" stroke="#D97706" stroke-width="1" stroke-opacity="0.20"/>
+  <!-- Accent bar -->
+  <rect x="808" y="208" width="40" height="3" rx="1.5" fill="#D97706"/>
+  <!-- Heading -->
+  <text x="808" y="236" font-family="Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="800" fill="#fbbf24">Grandma's Kitchen</text>
+  <!-- Subtitle -->
+  <text x="808" y="256" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#92400e">Warmth, spice, and nostalgia in every pixel.</text>
+  <!-- Surface card -->
+  <rect x="808" y="270" width="320" height="168" rx="10" fill="#2D1D12"/>
+  <!-- Tone chips inside card -->
+  <rect x="822" y="284" width="56"  height="22" rx="11" fill="#B45309"/>
+  <text x="850" y="300" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">warm</text>
+  <rect x="886" y="284" width="86"  height="22" rx="11" fill="#B45309"/>
+  <text x="929" y="300" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">nostalgic</text>
+  <rect x="980" y="284" width="52"  height="22" rx="11" fill="#B45309"/>
+  <text x="1006" y="300" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">cozy</text>
+  <!-- Body copy inside card -->
+  <text x="822" y="326" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#a16207">The quick brown fox jumps over the</text>
+  <text x="822" y="342" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#a16207">lazy dog. Design is the silent</text>
+  <text x="822" y="358" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#a16207">ambassador of your brand.</text>
+  <!-- Secondary block inside card -->
+  <rect x="822" y="374" width="136" height="52" rx="6" fill="#1C0F07"/>
+  <text x="834" y="394" font-family="Helvetica Neue, Arial, sans-serif" font-size="9"  fill="#555">surface</text>
+  <text x="834" y="410" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">#2D1D12</text>
+  <rect x="966" y="374" width="148" height="52" rx="6" fill="#1C0F07"/>
+  <text x="978" y="394" font-family="Helvetica Neue, Arial, sans-serif" font-size="9"  fill="#555">primary</text>
+  <text x="978" y="410" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">#B45309</text>
+  <!-- Swatches -->
+  <circle cx="832" cy="470" r="16" fill="#B45309"/>
+  <circle cx="870" cy="470" r="16" fill="#166534"/>
+  <circle cx="908" cy="470" r="16" fill="#DC2626"/>
+  <circle cx="946" cy="470" r="16" fill="#1C0F07"/>
+  <circle cx="946" cy="470" r="15.5" fill="none" stroke="#2a1a0a" stroke-width="1"/>
+  <circle cx="984" cy="470" r="16" fill="#2D1D12"/>
+  <!-- Swatch labels -->
+  <text x="832" y="496" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5a3010" text-anchor="middle">primary</text>
+  <text x="870" y="496" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5a3010" text-anchor="middle">secondary</text>
+  <text x="908" y="496" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5a3010" text-anchor="middle">accent</text>
+  <text x="946" y="496" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5a3010" text-anchor="middle">background</text>
+  <text x="984" y="496" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5a3010" text-anchor="middle">surface</text>
+  <!-- CTA buttons -->
+  <rect x="808" y="510" width="148" height="38" rx="8" fill="#D97706"/>
+  <text x="882" y="533" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Get Started</text>
+  <rect x="966" y="510" width="148" height="38" rx="8" fill="#2D1D12" stroke="#D97706" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="1040" y="533" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#a16207" text-anchor="middle">Learn More</text>
+  <!-- Frame border -->
+  <rect x="780" y="180" width="380" height="520" rx="16" fill="none" stroke="#D97706" stroke-width="1" stroke-opacity="0.25"/>
 
-  <!-- ── THIRD FRAME (barely visible, behind) ── -->
-  <rect x="1020" y="280" width="340" height="460" rx="16" fill="#0f0f0f" opacity="0.70"/>
+  <!-- ── THIRD FRAME: Soft Brutalism ── -->
+  <rect x="1020" y="280" width="340" height="460" rx="16" fill="#0f0f0f" opacity="0.95"/>
   <rect x="1020" y="280" width="340" height="4" rx="2" fill="#EF4444"/>
-  <text x="1048" y="322" font-family="Helvetica Neue, Arial, sans-serif" font-size="20" font-weight="800" fill="#e5e5e5">Soft Brutalism</text>
-  <rect x="1048" y="344" width="284" height="130" rx="8" fill="#171717"/>
-  <circle cx="1072" cy="502" r="14" fill="#E5E5E5"/>
-  <circle cx="1108" cy="502" r="14" fill="#737373"/>
-  <circle cx="1144" cy="502" r="14" fill="#EF4444"/>
-  <circle cx="1180" cy="502" r="14" fill="#171717"/>
-  <circle cx="1180" cy="502" r="13.5" fill="none" stroke="#333" stroke-width="1"/>
-  <circle cx="1216" cy="502" r="14" fill="#262626"/>
-  <rect x="1020" y="280" width="340" height="460" rx="16" fill="none" stroke="#EF4444" stroke-width="1" stroke-opacity="0.18"/>
+  <!-- Accent bar -->
+  <rect x="1048" y="306" width="40" height="3" rx="1.5" fill="#EF4444"/>
+  <!-- Heading -->
+  <text x="1048" y="332" font-family="Helvetica Neue, Arial, sans-serif" font-size="20" font-weight="800" fill="#e5e5e5">Soft Brutalism</text>
+  <!-- Subtitle -->
+  <text x="1048" y="350" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#444">Concrete, raw, and unapologetically bold.</text>
+  <!-- Surface card -->
+  <rect x="1048" y="362" width="284" height="148" rx="8" fill="#171717"/>
+  <!-- Tone chips inside card -->
+  <rect x="1062" y="376" width="44"  height="22" rx="11" fill="#EF4444"/>
+  <text x="1084" y="392" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">raw</text>
+  <rect x="1114" y="376" width="50"  height="22" rx="11" fill="#EF4444"/>
+  <text x="1139" y="392" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">bold</text>
+  <rect x="1172" y="376" width="54"  height="22" rx="11" fill="#EF4444"/>
+  <text x="1199" y="392" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">clean</text>
+  <!-- Body copy inside card -->
+  <text x="1062" y="418" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#737373">The quick brown fox jumps over</text>
+  <text x="1062" y="434" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#737373">the lazy dog. Design is the</text>
+  <text x="1062" y="450" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#737373">silent ambassador of your brand.</text>
+  <!-- Mini colour blocks inside card -->
+  <rect x="1062" y="466" width="120" height="34" rx="5" fill="#262626"/>
+  <text x="1072" y="480" font-family="Helvetica Neue, Arial, sans-serif" font-size="9" fill="#444">surface</text>
+  <text x="1072" y="494" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="700" fill="#e5e5e5">#262626</text>
+  <rect x="1192" y="466" width="124" height="34" rx="5" fill="#1a1a1a"/>
+  <text x="1202" y="480" font-family="Helvetica Neue, Arial, sans-serif" font-size="9" fill="#444">background</text>
+  <text x="1202" y="494" font-family="Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="700" fill="#e5e5e5">#171717</text>
+  <!-- Swatches -->
+  <circle cx="1072" cy="534" r="14" fill="#E5E5E5"/>
+  <circle cx="1108" cy="534" r="14" fill="#737373"/>
+  <circle cx="1144" cy="534" r="14" fill="#EF4444"/>
+  <circle cx="1180" cy="534" r="14" fill="#171717"/>
+  <circle cx="1180" cy="534" r="13.5" fill="none" stroke="#333" stroke-width="1"/>
+  <circle cx="1216" cy="534" r="14" fill="#262626"/>
+  <!-- Swatch labels -->
+  <text x="1072" y="558" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">primary</text>
+  <text x="1108" y="558" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">secondary</text>
+  <text x="1144" y="558" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">accent</text>
+  <text x="1180" y="558" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">background</text>
+  <text x="1216" y="558" font-family="Helvetica Neue, Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">surface</text>
+  <!-- CTA button -->
+  <rect x="1048" y="572" width="136" height="38" rx="8" fill="#EF4444"/>
+  <text x="1116" y="595" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Get Started</text>
+  <rect x="1196" y="572" width="136" height="38" rx="8" fill="#171717" stroke="#EF4444" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="1264" y="595" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#737373" text-anchor="middle">Learn More</text>
+  <!-- Frame border -->
+  <rect x="1020" y="280" width="340" height="460" rx="16" fill="none" stroke="#EF4444" stroke-width="1" stroke-opacity="0.25"/>
 
   <!-- ── PLUGIN PANEL (right side) ── -->
   <rect x="1340" y="0" width="580" height="1080" fill="url(#panel-grad)" filter="url(#panel-shadow)"/>
