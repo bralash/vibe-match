@@ -25,12 +25,18 @@ function normaliseRGB(entry) {
     };
 }
 function findExistingPaintStyle(name) {
-    var _a;
-    return (_a = figma.getLocalPaintStyles().find((s) => s.name === name)) !== null && _a !== void 0 ? _a : null;
+    return __awaiter(this, void 0, void 0, function* () {
+        var _a;
+        const styles = yield figma.getLocalPaintStylesAsync();
+        return (_a = styles.find((s) => s.name === name)) !== null && _a !== void 0 ? _a : null;
+    });
 }
 function findExistingTextStyle(name) {
-    var _a;
-    return (_a = figma.getLocalTextStyles().find((s) => s.name === name)) !== null && _a !== void 0 ? _a : null;
+    return __awaiter(this, void 0, void 0, function* () {
+        var _a;
+        const styles = yield figma.getLocalTextStylesAsync();
+        return (_a = styles.find((s) => s.name === name)) !== null && _a !== void 0 ? _a : null;
+    });
 }
 // ─── Style application ────────────────────────────────────────────────────────
 function applyStyles(payload) {
@@ -39,7 +45,7 @@ function applyStyles(payload) {
         for (const entry of payload.palette) {
             const styleName = `${STYLE_PREFIX}${entry.role}`;
             const rgb = normaliseRGB(entry);
-            let style = findExistingPaintStyle(styleName);
+            let style = yield findExistingPaintStyle(styleName);
             // Only modify styles we own (prefix match) — foreign styles are left alone
             if (style === null) {
                 style = figma.createPaintStyle();
@@ -75,7 +81,7 @@ function applyStyles(payload) {
                     yield figma.loadFontAsync({ family, style: resolvedStyle });
                 }
             }
-            let style = findExistingTextStyle(styleName);
+            let style = yield findExistingTextStyle(styleName);
             if (style === null) {
                 style = figma.createTextStyle();
                 style.name = styleName;

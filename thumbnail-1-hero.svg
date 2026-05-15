@@ -1,0 +1,126 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080">
+  <defs>
+    <radialGradient id="bg1" cx="32%" cy="38%" r="72%">
+      <stop offset="0%" stop-color="#1e0a3c"/>
+      <stop offset="100%" stop-color="#05050f"/>
+    </radialGradient>
+    <linearGradient id="titleg1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <radialGradient id="vig1" cx="50%" cy="50%" r="80%">
+      <stop offset="40%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.70"/>
+    </radialGradient>
+    <linearGradient id="bottom-fade1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.5"/>
+    </linearGradient>
+    <filter id="blur-xl1"><feGaussianBlur stdDeviation="90"/></filter>
+    <filter id="blur-md1"><feGaussianBlur stdDeviation="40"/></filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bg1)"/>
+
+  <!-- Ambient glow blobs -->
+  <circle cx="1285" cy="460" r="520" fill="#5b21b6" opacity="0.22" filter="url(#blur-xl1)"/>
+  <circle cx="1580" cy="850" r="380" fill="#1d4ed8" opacity="0.14" filter="url(#blur-xl1)"/>
+  <circle cx="200"  cy="300" r="320" fill="#4c1d95" opacity="0.10" filter="url(#blur-xl1)"/>
+  <circle cx="600"  cy="950" r="300" fill="#0369a1" opacity="0.10" filter="url(#blur-xl1)"/>
+
+  <!-- Subtle vertical divider -->
+  <line x1="880" y1="60" x2="880" y2="1020" stroke="#fff" stroke-opacity="0.04" stroke-width="1"/>
+
+  <!-- ───── RIGHT: Large artistic circles ───── -->
+  <rect x="940" y="68" width="912" height="944" rx="44" fill="#07070f" opacity="0.52"/>
+
+  <!-- Three primary circles -->
+  <circle cx="1148" cy="418" r="215" fill="#FF5C5C" opacity="0.88"/>
+  <circle cx="1422" cy="418" r="215" fill="#FFD44F" opacity="0.80"/>
+  <circle cx="1285" cy="608" r="215" fill="#7B6EF6" opacity="0.86"/>
+
+  <!-- Blend circles -->
+  <circle cx="1285" cy="368" r="92"  fill="#FF9A3C" opacity="0.68"/>
+  <circle cx="1378" cy="524" r="76"  fill="#C4A8F5" opacity="0.58"/>
+  <circle cx="1192" cy="524" r="76"  fill="#D96ECC" opacity="0.58"/>
+  <circle cx="1285" cy="466" r="54"  fill="#F5E8FF" opacity="0.44"/>
+
+  <!-- Container vignette -->
+  <rect x="940" y="68" width="912" height="944" rx="44" fill="url(#vig1)" opacity="0.45"/>
+
+  <!-- ───── LEFT: Content ───── -->
+
+  <!-- Small logo mark -->
+  <g transform="translate(80, 96)">
+    <rect width="76" height="76" rx="17" fill="#0f0f0f"/>
+    <circle cx="27.5" cy="31"  r="16.5" fill="#FF5C5C" opacity="0.92"/>
+    <circle cx="48.5" cy="31"  r="16.5" fill="#FFD44F" opacity="0.88"/>
+    <circle cx="38"   cy="48"  r="16.5" fill="#7B6EF6" opacity="0.90"/>
+    <circle cx="38"   cy="27"  r="7.2"  fill="#FF9A3C" opacity="0.72"/>
+    <circle cx="45"   cy="41"  r="6"    fill="#C4A8F5" opacity="0.58"/>
+    <circle cx="31"   cy="41"  r="6"    fill="#D96ECC" opacity="0.58"/>
+    <circle cx="38"   cy="36"  r="4"    fill="#F5E8FF" opacity="0.50"/>
+  </g>
+
+  <!-- Plugin eyebrow label -->
+  <text x="172" y="147" font-family="Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" fill="#555" letter-spacing="4">A FIGMA PLUGIN</text>
+
+  <!-- Main gradient title -->
+  <text x="80" y="352" font-family="Helvetica Neue, Arial, sans-serif" font-size="116" font-weight="800" fill="url(#titleg1)" letter-spacing="-2">Vibe Match</text>
+
+  <!-- Tagline -->
+  <text x="82" y="412" font-family="Helvetica Neue, Arial, sans-serif" font-size="26" fill="#888">Turn a feeling into a design system</text>
+
+  <!-- Feature bullets -->
+  <circle cx="87" cy="474" r="5" fill="#c084fc"/>
+  <text x="104" y="480" font-family="Helvetica Neue, Arial, sans-serif" font-size="19" fill="#bbb">AI-generated color palettes &amp; font pairings</text>
+
+  <circle cx="87" cy="518" r="5" fill="#60a5fa"/>
+  <text x="104" y="524" font-family="Helvetica Neue, Arial, sans-serif" font-size="19" fill="#bbb">One-click Figma local styles</text>
+
+  <circle cx="87" cy="562" r="5" fill="#4ade80"/>
+  <text x="104" y="568" font-family="Helvetica Neue, Arial, sans-serif" font-size="19" fill="#bbb">Instant preview frames on canvas</text>
+
+  <circle cx="87" cy="606" r="5" fill="#fb923c"/>
+  <text x="104" y="612" font-family="Helvetica Neue, Arial, sans-serif" font-size="19" fill="#bbb">Vibe history &amp; one-click remixing</text>
+
+  <!-- Palette section label -->
+  <text x="82" y="686" font-family="Helvetica Neue, Arial, sans-serif" font-size="11" fill="#3a3a3a" letter-spacing="3">SAMPLE PALETTES</text>
+  <line x1="82" y1="692" x2="820" y2="692" stroke="#222" stroke-width="1"/>
+
+  <!-- Tokyo Midnight -->
+  <text x="82" y="724" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#444" letter-spacing="0.5">Tokyo Midnight</text>
+  <circle cx="96"  cy="756" r="15" fill="#8B5CF6"/>
+  <circle cx="136" cy="756" r="15" fill="#38BDF8"/>
+  <circle cx="176" cy="756" r="15" fill="#F472B6"/>
+  <circle cx="216" cy="756" r="15" fill="#0A0A14"/>
+  <circle cx="216" cy="756" r="14.5" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+  <circle cx="256" cy="756" r="15" fill="#1E1B4B"/>
+
+  <!-- Grandma's Kitchen -->
+  <text x="312" y="724" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#444" letter-spacing="0.5">Grandma's Kitchen</text>
+  <circle cx="326" cy="756" r="15" fill="#B45309"/>
+  <circle cx="366" cy="756" r="15" fill="#166534"/>
+  <circle cx="406" cy="756" r="15" fill="#DC2626"/>
+  <circle cx="446" cy="756" r="15" fill="#1C0F07"/>
+  <circle cx="446" cy="756" r="14.5" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+  <circle cx="486" cy="756" r="15" fill="#2D1D12"/>
+
+  <!-- Soft Brutalism -->
+  <text x="542" y="724" font-family="Helvetica Neue, Arial, sans-serif" font-size="12" fill="#444" letter-spacing="0.5">Soft Brutalism</text>
+  <circle cx="556" cy="756" r="15" fill="#E5E5E5"/>
+  <circle cx="596" cy="756" r="15" fill="#737373"/>
+  <circle cx="636" cy="756" r="15" fill="#EF4444"/>
+  <circle cx="676" cy="756" r="15" fill="#171717"/>
+  <circle cx="676" cy="756" r="14.5" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+  <circle cx="716" cy="756" r="15" fill="#262626"/>
+
+  <!-- "Powered by Claude" badge -->
+  <rect x="82" y="820" width="236" height="40" rx="20" fill="#1e1533" stroke="#4c1d95" stroke-width="1.5"/>
+  <text x="200" y="845" font-family="Helvetica Neue, Arial, sans-serif" font-size="14" fill="#c084fc" text-anchor="middle">✦  Powered by Claude AI</text>
+
+  <!-- Global vignette & bottom fade -->
+  <rect width="1920" height="1080" fill="url(#vig1)" opacity="0.30"/>
+  <rect y="860" width="1920" height="220" fill="url(#bottom-fade1)"/>
+</svg>
