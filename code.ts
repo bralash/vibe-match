@@ -47,12 +47,14 @@ function normaliseRGB(entry: ColorEntry): RGB {
   };
 }
 
-function findExistingPaintStyle(name: string): PaintStyle | null {
-  return figma.getLocalPaintStyles().find((s) => s.name === name) ?? null;
+async function findExistingPaintStyle(name: string): Promise<PaintStyle | null> {
+  const styles = await figma.getLocalPaintStylesAsync();
+  return styles.find((s) => s.name === name) ?? null;
 }
 
-function findExistingTextStyle(name: string): TextStyle | null {
-  return figma.getLocalTextStyles().find((s) => s.name === name) ?? null;
+async function findExistingTextStyle(name: string): Promise<TextStyle | null> {
+  const styles = await figma.getLocalTextStylesAsync();
+  return styles.find((s) => s.name === name) ?? null;
 }
 
 // ─── Style application ────────────────────────────────────────────────────────
@@ -63,7 +65,7 @@ async function applyStyles(payload: VibePayload): Promise<void> {
     const styleName = `${STYLE_PREFIX}${entry.role}`;
     const rgb = normaliseRGB(entry);
 
-    let style = findExistingPaintStyle(styleName);
+    let style = await findExistingPaintStyle(styleName);
 
     // Only modify styles we own (prefix match) — foreign styles are left alone
     if (style === null) {
@@ -105,7 +107,7 @@ async function applyStyles(payload: VibePayload): Promise<void> {
       }
     }
 
-    let style = findExistingTextStyle(styleName);
+    let style = await findExistingTextStyle(styleName);
 
     if (style === null) {
       style = figma.createTextStyle();

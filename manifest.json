@@ -1,10 +1,11 @@
 {
   "name": "Vibe Match",
-  "id": "vibe-match-plugin",
+  "id": "1632462916667455026",
   "api": "1.0.0",
   "main": "code.js",
   "ui": "ui.html",
   "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
   "networkAccess": {
     "allowedDomains": ["https://api.anthropic.com"]
   }
